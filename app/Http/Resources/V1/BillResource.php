@@ -18,11 +18,13 @@ class BillResource extends JsonResource
     {
         return [
             'id' => $this->id,
-            'customer' => $this->customer ? $this->customer->name : 'العميل محذوف' ,
+            'customer' => $this->customer ? $this->customer->name : 'العميل محذوف',
+            'phone' => $this->customer ? $this->customer->phone : 000000,
             'overAll' => $this->overAll,
             'createdAt' => $this->created_at,
             'paid' => $this->paid,
-            'cart' => CartResource::collection($this->carts)
+            'cart' => CartResource::collection($this->carts),
+            'date' => $this->created_at->format('d/m/Y')
         ];
     }
 }
